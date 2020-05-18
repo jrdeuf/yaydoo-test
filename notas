@@ -1,0 +1,48 @@
+
+Se entrega un servicio scraper con los siguientes arhivos:
+
+index.js
+product.controller.js
+product.service.js
+db.js
+
+
+Notas
+
+1. index.js es el punto de entrada del scraper. Como se puede observar, el script funciona con una arquitectura de inyección de dependencias. 
+Los tres módulos principales, producto, servicio y db están expuestos como factories, lo que da a los módulos mucha flexibilidad para poder usar dependencias externas, en lugar de 
+módulos hardocodeados directamente. 
+
+
+3. Cada módulo tiene su responsabilidad única:
+
+- index.js centraliza la creación de los factories.
+- product.controller.js se comunica con el servicio para obtener la información de los productos
+- product.service.js contiene la lógica para interpretar la información obtenida del html y se comunica con el servicio de base de datos.
+- db.js contiene la conexión con la base de datos y se encarga de realizar el guardado y la recuperación de los datos de los productos.
+
+
+Para correr el programa
+
+1. Instalar dependencias
+2. Ejectuar yarn scraper
+
+El servicio empezará a correr y mostrará en pantalla un resultado similar a este
+
+    JSON products
+    < Array de objetos con los productos encontrados>
+    Scraping Complete
+    Connected to database
+    Showing rows from database
+    < Filas recuperadas de la base de datos después del guardado >
+
+
+Testeado con node 10.16.0
+
+
+En una segunda versión incluiría un enfoque con async/await en lugar de callbacks y manejo de excepciones para mejorar el coverage de la aplicación.
+
+
+
+
+
